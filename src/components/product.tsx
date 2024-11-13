@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Card, CardContent, CardActions, Typography, Button as MUIButton } from "@mui/material";
+import { Card, CardContent, CardActions,CardMedia, Typography, Button as MUIButton } from "@mui/material";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -14,6 +14,7 @@ interface Product {
     price: string;
     rating: string;
     stock: string;
+    thumbnail:string;
 }
 
 const Product = () => {
@@ -41,6 +42,11 @@ const Product = () => {
                 {currentProducts.map(product => (
                     <Col xs={12} sm={6} md={4} key={product.id} className="d-flex justify-content-center mb-4">
                         <Card sx={{ width: 300, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                            <CardMedia
+                                component="img"
+                                height="140"
+                                image={product.thumbnail}
+                            />
                             <CardContent>
                                 <Typography variant="h6" gutterBottom>{product.title}</Typography>
                                 <Typography color="textSecondary">{product.brand}</Typography>
