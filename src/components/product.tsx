@@ -11,7 +11,7 @@ interface Product {
     brand: string;
     description: string;
     category: string;
-    price: string;
+    price: number;
     rating: string;
     stock: string;
     thumbnail:string;
@@ -49,13 +49,10 @@ const Product = () => {
                             />
                             <CardContent>
                                 <Typography variant="h6" gutterBottom>{product.title}</Typography>
-                                <Typography color="textSecondary">{product.brand}</Typography>
-                                <Typography variant="body2" color="textSecondary">
-                                    {product.description} {/* Full description displayed here */}
-                                </Typography>
+                                <Typography color="textSecondary">Brand:{product.brand}</Typography>
                                 <Typography variant="body2">Category: {product.category}</Typography>
                                 <Typography variant="body2">Rating: {product.rating}</Typography>
-                                <Typography variant="body2">Price: {product.price}</Typography>
+                                <Typography variant="body2">Price:$ {product.price}</Typography>
                                 <Typography variant="body2">Stock: {product.stock}</Typography>
                             </CardContent>
                             <CardActions sx={{ justifyContent: 'space-between' }}>

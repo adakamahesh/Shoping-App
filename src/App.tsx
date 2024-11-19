@@ -5,6 +5,7 @@ import Product from './components/product';
 import DashBoard from './components/DashBoard';
 import Cart from './components/cart';
 import RootLayout from './components/RootLayout';
+import SingleProduct from './components/SingleProduct';
 
 function App() {
 
@@ -12,7 +13,8 @@ function App() {
     <Route path='/' element={<RootLayout/>}>
       <Route index element={<DashBoard/>}/>
       <Route path='/cart' element={<Cart/>}/>
-      <Route path='/products/:id' element={<Product/>}/>
+      <Route path="/products" element={<Product/>}/>
+      <Route path="/products/:id" element={<SingleProduct/>}/>
     </Route>
   ))
 
