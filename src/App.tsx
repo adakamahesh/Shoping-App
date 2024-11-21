@@ -6,6 +6,7 @@ import DashBoard from './components/DashBoard';
 import Cart from './components/cart';
 import RootLayout from './components/RootLayout';
 import SingleProduct from './components/SingleProduct';
+import Categories from './components/Categories';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
       <Route path='/cart' element={<Cart/>}/>
       <Route path="/products" element={<Product/>}/>
       <Route path="/products/:id" element={<SingleProduct/>}/>
+      <Route path='/categories' element={<Categories/>}/>
     </Route>
   ))
 
