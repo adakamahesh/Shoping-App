@@ -7,6 +7,7 @@ import Cart from './components/cart';
 import RootLayout from './components/RootLayout';
 import SingleProduct from './components/SingleProduct';
 import Categories from './components/Categories';
+import SearchResults from './components/Search';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
       <Route path="/products" element={<Product/>}/>
       <Route path="/products/:id" element={<SingleProduct/>}/>
       <Route path='/categories' element={<Categories/>}/>
+      <Route path='/Search' element={<SearchResults/>}/>
     </Route>
   ))
 

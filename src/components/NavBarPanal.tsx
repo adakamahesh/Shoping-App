@@ -1,12 +1,24 @@
+import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
+    const [searchQuery, setSearchQuery] = useState(""); // State for search input
+    const navigate = useNavigate(); // Hook for programmatic navigation
+
+    const handleSearch = (e: React.FormEvent) => {
+      e.preventDefault();
+      if (searchQuery.trim() !== "") {
+        // Navigate to the search results page with the query as a parameter
+        navigate(`/search?q=${searchQuery}`);
+      }
+    };
+    
     return (
         <Navbar className="bg-body-tertiary">
       <Container fluid>
@@ -30,14 +42,16 @@ const NavBar = () => {
             </NavDropdown>
           </Nav>
           <Navbar.Collapse className='justify-content-end'>
-          <Form className="d-flex">
+          <Form className="d-flex" onSubmit={handleSearch}>
             <Form.Control
               type="search"
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              value={searchQuery}
+              onChange={(e)=>setSearchQuery(e.target.value)}
             />
-            <Button variant="outline-success">Search</Button>
+            <Button variant="outline-success" type='submit'>Search</Button>
           </Form>
           </Navbar.Collapse>
           <Navbar.Collapse className='justify-content-end' >
