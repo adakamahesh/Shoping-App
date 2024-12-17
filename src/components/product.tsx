@@ -4,6 +4,8 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Pagination from "react-bootstrap/Pagination";
+import { useDispatch } from "react-redux";
+import {add} from './Store/CartSlice';
 
 interface Product {
     id: number;
@@ -18,6 +20,7 @@ interface Product {
 }
 
 const Product = () => {
+    const dispatch = useDispatch();
     const [products, setProducts] = useState<Product[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
@@ -27,6 +30,11 @@ const Product = () => {
             .then(data => data.json())
             .then(result => setProducts(result.products));
     }, []);
+
+    const addToCart=(product:Product)=>{
+        //dispatch an add action
+        dispatch(add(product));
+    };
 
     const totalPages = Math.ceil(products.length / itemsPerPage);
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -56,7 +64,7 @@ const Product = () => {
                                 <Typography variant="body2">Stock: {product.stock}</Typography>
                             </CardContent>
                             <CardActions sx={{ justifyContent: 'space-between' }}>
-                                <MUIButton variant="contained" color="success">Add</MUIButton>
+                                <MUIButton variant="contained" color="success" onClick={()=>addToCart(product)}>Add</MUIButton>
                                 <MUIButton variant="contained" color="error">Delete</MUIButton>
                             </CardActions>
                         </Card>

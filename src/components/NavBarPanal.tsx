@@ -6,8 +6,11 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from './Store/Store';
 
 const NavBar = () => {
+    const cartProducts = useSelector((state: RootState) => state.cart);
     const [searchQuery, setSearchQuery] = useState(""); // State for search input
     const navigate = useNavigate(); // Hook for programmatic navigation
 
@@ -56,7 +59,7 @@ const NavBar = () => {
           </Navbar.Collapse>
           <Navbar.Collapse className='justify-content-end' >
             <Navbar.Text>
-                <Nav.Link to='/cart' as={Link}>My Bag 0</Nav.Link>
+                <Nav.Link to='/cart' as={Link}>My Bag: {cartProducts.length}</Nav.Link>
             </Navbar.Text>
           </Navbar.Collapse>
         </Navbar.Collapse>
