@@ -39,7 +39,7 @@ const NavBar = () => {
               Filters
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action4">
+              <NavDropdown.Item to="/AddProduct" as={Link}>
                 Add New Product
               </NavDropdown.Item>
             </NavDropdown>
