@@ -9,6 +9,7 @@ import SingleProduct from './components/SingleProduct';
 import Categories from './components/Categories';
 import SearchResults from './components/Search';
 import AddProduct from './components/AddProduct';
+import EditProduct from './components/EditProduct';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
       <Route path='/categories' element={<Categories/>}/>
       <Route path='/Search' element={<SearchResults/>}/>
       <Route path="/AddProduct" element={<AddProduct />} />
+      <Route path="/Editproduct/:productId" element={<EditProduct />} />
     </Route>
   ))
 

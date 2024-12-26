@@ -5,8 +5,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Pagination from "react-bootstrap/Pagination";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { add } from "./Store/CartSlice";
-import AddProduct from "./AddProduct";
 
 interface Product {
     id: number;
@@ -22,6 +22,7 @@ interface Product {
 
 const Product = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [products, setProducts] = useState<Product[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 7;
@@ -37,6 +38,10 @@ const Product = () => {
         // Dispatch an add action
         dispatch(add(product));
     };
+
+    const editProduct =(productId: number) => {
+         navigate(`/EditProduct/${productId}`)
+    }
 
     const totalPages = Math.ceil(products.length / itemsPerPage);
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -67,8 +72,8 @@ const Product = () => {
                                 <MUIButton variant="contained" color="success" onClick={() => addToCart(product)}>
                                     Add
                                 </MUIButton>
-                                <MUIButton variant="contained" color="error">
-                                    Delete
+                                <MUIButton variant="contained" color="error" onClick={() => editProduct(product.id)}>
+                                    Edit
                                 </MUIButton>
                             </CardActions>
                         </Card>

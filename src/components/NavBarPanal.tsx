@@ -35,9 +35,6 @@ const NavBar = () => {
           >
             <NavDropdown title="Categories" id="navbarScrollingDropdown">
               <NavDropdown.Item to="/categories" as={Link}>Product Categories</NavDropdown.Item>
-              <NavDropdown.Item href="#action3">
-              Filters
-              </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item to="/AddProduct" as={Link}>
                 Add New Product
